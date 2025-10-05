@@ -24,3 +24,5 @@ AWS architecture:
 - EventBridge, Lambda & SQS:
   - EventBridge used to send a request to the Lambda every x minutes
   - SQS used to send data to the ECS instance from the Lambda
+
+![AWS diagram](https://raw.githubusercontent.com/Thomasssb1/aws-fargate-terraform/refs/heads/main/aws.png)
