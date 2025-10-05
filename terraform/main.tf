@@ -9,3 +9,16 @@ module "cloudwatch" {
   waf_log_group_retention_in_days = 30
   tags                            = {}
 }
+
+module "waf" {
+  source            = "./modules/waf"
+  waf_name          = "example-waf-acl"
+  waf_log_group_arn = module.cloudwatch.waf_log_group_arn
+  tags              = {}
+}
+
+module "ecr-repository" {
+  source  = "./modules/ecr"
+  name    = "${var.container_name}-repo"
+  mutable = true
+}
