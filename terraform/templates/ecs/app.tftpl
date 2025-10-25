@@ -1,0 +1,29 @@
+[
+    {
+        "name": "${container_name}",
+        "image": "${container_image}",
+        "cpu": ${cpu},
+        "memory": ${memory},
+        "networkMode": "awsvpc",
+        "portMappings": [
+            {
+                "containerPort": ${app_port},
+                "hostPort": ${app_port},
+                "protocol": "tcp"
+            }
+        ],
+        "essential": true,
+        "environment": [],
+        "secrets": [],
+        "user": "",
+        "readonlyRootFilesystem": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-group": "/ecs/${container_name}-${environment}",
+                "awslogs-region": "${aws_region}",
+                "awslogs-stream-prefix": "ecs"
+            }
+        }
+    }
+]
